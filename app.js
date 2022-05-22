@@ -37,14 +37,15 @@ const hiddenArrow = () => {
   }
 };
 
-const nextRight = () =>{
-      //currentImgIndex = currentImgIndex+1;
-      currentImgIndex++;
-      popupImg.src = thumb[currentImgIndex].src;
-      hiddenArrow();
+const nextRight = () => {
+  //currentImgIndex = currentImgIndex+1;
+  currentImgIndex++;
+  popupImg.src = thumb[currentImgIndex].src;
+  hiddenArrow();
 };
-const nextLeft = () =>{
-    //currentImgIndex = currentImgIndex-1;
+const nextLeft = () => {
+  //currentImgIndex = currentImgIndex-1;
+  
   currentImgIndex--;
   popupImg.src = thumb[currentImgIndex].src;
   //console.log(currentImgIndex);
@@ -81,21 +82,19 @@ popupClose.addEventListener("click", () => {
 });
 
 arrowRight.addEventListener("click", () => {
-    nextRight();
-
+  nextRight();
 });
 arrowLeft.addEventListener("click", () => {
-    nextLeft();
+  nextLeft();
 });
 
 document.addEventListener("keydown", (e) => {
-    if(e.code==="ArrowRight" || e.keyCode === 39) {
-        nextRight();
-        console.log ("w prawo");
-    };
-    if(e.code==="ArrowLeft" || e.keyCode === 37) {
-        nextLeft();
-        console.log ("w lewo");
-    }
-    
+  if (e.code === "ArrowRight" || e.keyCode === 39) {
+    nextRight();
+    console.log("w prawo");
+  }
+  if (e.code === "ArrowLeft" || e.keyCode === 37) {
+    nextLeft();
+    console.log("w lewo");
+  }
 });
