@@ -10,28 +10,36 @@
   <body>
     <h1>Galeria zdjęć</h1>
     <ul class="gallery">
-        <li class="thumb"><img src="images/1.jpg" alt=""></li>
-        <li class="thumb"><img src="images/2.jpg" alt=""></li>
-        <li class="thumb"><img src="images/3.jpg" alt=""></li>
-        <li class="thumb"><img src="images/4.jpg" alt=""></li>
-        <li class="thumb"><img src="images/5.jpg" alt=""></li>
-        <li class="thumb"><img src="images/6.jpg" alt=""></li>
-        <li class="thumb"><img src="images/7.jpg" alt=""></li>
-        <li class="thumb"><img src="images/8.jpg" alt=""></li>
-        <li class="thumb"><img src="images/9.jpg" alt=""></li>
-        <li class="thumb"><img src="images/10.jpg" alt=""></li>
+      <li class="thumb"><img tabindex="0" src="images/1.jpg" alt="" /></li>
+      <li class="thumb"><img tabindex="0" src="images/2.jpg" alt="" /></li>
+      <li class="thumb"><img tabindex="0" src="images/3.jpg" alt="" /></li>
+      <li class="thumb"><img tabindex="0" src="images/4.jpg" alt="" /></li>
+      <li class="thumb"><img tabindex="0" src="images/5.jpg" alt="" /></li>
+      <li class="thumb"><img tabindex="0" src="images/6.jpg" alt="" /></li>
+      <li class="thumb"><img tabindex="0" src="images/7.jpg" alt="" /></li>
+      <li class="thumb"><img tabindex="0" src="images/8.jpg" alt="" /></li>
+      <li class="thumb"><img tabindex="0" src="images/9.jpg" alt="" /></li>
+      <li class="thumb"><img tabindex="0" src="images/10.jpg" alt="" /></li>
     </ul>
     <div class="popup hidden">
-        <div class="popup-body">
-            <button class="popup__close"> x </button>
-            <img src="images/1.jpg" alt="" class="popup__img">
-            <button class="popup__arrow popup__arrow--left"><</button>
-            <button class="popup__arrow popup__arrow--right">></button>
-        </div>
+      <div class="popup-body">
+        <button aria-label="Zamknij popup" class="popup__close">x</button>
+        <img src="images/1.jpg" alt="" class="popup__img" />
+        <button
+          aria-label="Poprzednie zdjęcie"
+          class="popup__arrow popup__arrow--left"
+        >
+          <
+        </button>
+        <button
+          arial-label="Następne zdjęcie"
+          class="popup__arrow popup__arrow--right"
+        >
+          >
+        </button>
+      </div>
     </div>
-    <footer>
-        copyright by Agnieszka Mandal. 2022
-    </footer>
+    <footer>copyright by Agnieszka Mandal. 2022</footer>
     <script src="app.js"></script>
   </body>
 </html>

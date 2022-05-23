@@ -37,64 +37,86 @@ const hiddenArrow = () => {
   }
 };
 
-const nextRight = () => {
+const showNextRight = () => {
   //currentImgIndex = currentImgIndex+1;
   currentImgIndex++;
   popupImg.src = thumb[currentImgIndex].src;
   hiddenArrow();
 };
-const nextLeft = () => {
+const showNextLeft = () => {
   //currentImgIndex = currentImgIndex-1;
-  
+
   currentImgIndex--;
   popupImg.src = thumb[currentImgIndex].src;
   //console.log(currentImgIndex);
   hiddenArrow();
 };
+const closePopup = () => {
+  popup.classList.add("fade-out");
+  setTimeout(() => {
+    popup.classList.add("hidden");
+    popup.classList.remove("fade-out");
+    thumb.forEach((element) => {
+      element.setAttribute("tabindex", 1);
+    });
+  }, 300);
+};
 
 let currentImgIndex;
 
-//console.log (popup);
-
-//console.log (thumb);
-// to jest "tablica" a raczej nodelist
-
 thumb.forEach((el, index) => {
-  el.addEventListener("click", (e) => {
+  const showPopup = (e) => {
     popup.classList.remove("hidden");
     arrowLeft.classList.remove("hidden");
     arrowRight.classList.remove("hidden");
 
     popupImg.src = e.target.src;
-    //console.log(e.target.src);
     currentImgIndex = index;
+
+    thumb.forEach((element) => {
+      element.setAttribute("tabindex", -1);
+    });
+
     if (currentImgIndex == 0) {
       arrowLeft.classList.add("hidden");
     }
     if (currentImgIndex == thumb.length - 1) {
       arrowRight.classList.add("hidden");
     }
+  };
+
+  el.addEventListener("click", showPopup);
+  el.addEventListener("keydown", (e) => {
+    if (e.code === "Enter" || e.keyCode === 13) {
+      showPopup(e);
+    }
   });
 });
 
-popupClose.addEventListener("click", () => {
-  popup.classList.add("hidden");
-});
-
-arrowRight.addEventListener("click", () => {
-  nextRight();
-});
-arrowLeft.addEventListener("click", () => {
-  nextLeft();
-});
+popupClose.addEventListener("click", closePopup);
+arrowRight.addEventListener("click", showNextRight);
+arrowLeft.addEventListener("click", showNextLeft);
 
 document.addEventListener("keydown", (e) => {
-  if (e.code === "ArrowRight" || e.keyCode === 39) {
-    nextRight();
-    console.log("w prawo");
-  }
-  if (e.code === "ArrowLeft" || e.keyCode === 37) {
-    nextLeft();
-    console.log("w lewo");
+  if (!popup.classList.contains("hidden")) {
+    if (e.code === "ArrowRight" || e.keyCode === 39) {
+      showNextRight();
+    }
+    if (e.code === "ArrowLeft" || e.keyCode === 37) {
+      showNextLeft();
+    }
+    if (e.code === "Esc" || e.keyCode === 27) {
+      closePopup();
+    }
   }
 });
+
+popup.addEventListener("click", (e) => {
+  if (e.target === popup) {
+    closePopup();
+  }
+  //console.log(e.target);
+});
+
+
+// na przyszłość -> event delegation

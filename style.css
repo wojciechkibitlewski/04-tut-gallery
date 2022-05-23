@@ -34,6 +34,7 @@ h1 {
   cursor: pointer;
   overflow: hidden;
 }
+
 .thumb:hover {
   transform: scale(1.05);
 }
@@ -42,7 +43,9 @@ h1 {
   height: 100%;
   object-fit: cover;
 }
-
+.thumb img:focus {
+  border: solid 1px #aaa;
+}
 footer {
   font-size: 12pt;
   text-align: center;
@@ -61,7 +64,10 @@ footer {
   display: flex;
   justify-content: center;
   align-items: center;
-  
+  animation: fadeIn 0.3s;
+}
+.popup.fade-out {
+  animation: fadeOut 0.9s both;
 }
 .popup.hidden {
   display: none;
@@ -70,15 +76,12 @@ footer {
   display: flex;
   flex-direction: column;
   align-items: flex-end;
-    overflow: hidden;
-    padding: 10px;
-  
-  
+  overflow: hidden;
 }
 
-.popup__close,.popup__arrow {
-    border: none;
-
+.popup__close,
+.popup__arrow {
+  border: none;
 }
 .popup__close {
   padding: 5px;
@@ -94,30 +97,48 @@ footer {
   max-height: 90vh;
 }
 .popup__arrow {
-    border-radius: 50%;
-    font-size: 82px;
-    width: 82px;
-    height: 82px;
-    line-height: 82px;
-    position: absolute;
-    top: 50%;
-    opacity: 0.3;
-    transition: opacity 0.3s;
-    cursor: pointer;
+  border-radius: 50%;
+  font-size: 82px;
+  width: 82px;
+  height: 82px;
+  line-height: 82px;
+  position: absolute;
+  top: 50%;
+  opacity: 0.3;
+  transition: opacity 0.3s;
+  cursor: pointer;
 }
 .popup__arrow:hover {
-    opacity: 0.8;
+  opacity: 0.8;
 }
-.popup__arrow.popup__arrow--left{
-    left: 2%;
+.popup__arrow.popup__arrow--left {
+  left: 2%;
 }
-.popup__arrow.popup__arrow--right{
-    right: 3%;
+.popup__arrow.popup__arrow--right {
+  right: 3%;
 }
 .popup__arrow.popup__arrow--left.hidden,
 .popup__arrow.popup__arrow--right.hidden {
-    display: none;
+  display: none;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
   }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
 @media only screen and (max-width: 576px) {
   h1 {
     font-size: 42px;
